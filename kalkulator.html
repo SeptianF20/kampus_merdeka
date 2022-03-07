@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Kalkulator</title>
+</head>
+
+<body>
+    <form id="formulir">
+        <table class="tabel">
+            <h1>Calculator</h1>
+            <tr>
+                <td>Angka 1</td>
+                <td>:</td>
+                <td><input type="text" name="a1" onfocus="clear1()" value="Angka 1"></td>
+            </tr>
+            <tr>
+                <td>Angka 2</td>
+                <td>:</td>
+                <td><input type="text" name="a2" onfocus="clear2()" value="Angka 2"></td>
+            </tr>
+            <tr>
+                <td>Hasil</td>
+                <td>:</td>
+                <td><input type="number" name="hasil" disabled></td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input class="tombol" type="button" onclick="penjumlahan()" value="  +  ">
+                    <input class="tombol" type="button" onclick="pengurangan()" value="  -  ">
+                    <input class="tombol" type="button" onclick="perkalian()" value="  *  ">
+                    <input class="tombol" type="button" onclick="pembagian()" value="  /  ">
+                    <input class="tombol" type="button" onclick="kuadrat()" value="  ^  ">
+                    <input type="button" name="batal" value="Batal" onclick="kosongAll()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
+<script src="js/script.js"></script>
