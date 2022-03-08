@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-spacing: 1;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        table * {
+            position: relative;
+        }
+
+        table td,
+        table th {
+            padding-left: 8px;
+        }
+
+        table thead tr {
+            height: 60px;
+            background: #ffed86;
+            font-size: 16px;
+        }
+
+        table tbody tr {
+            height: 48px;
+            border-bottom: 1px solid #e3f1d5;
+        }
+
+        body {
+            background: #9bc86a;
+            font: 400 14px "Calibri", "Arial";
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let judul_tabel = ['No.', 'Lokasi', 'Skala Gempa', 'Dampak'];
+    </script>
+    <h1>Data Gempa</h1>
+    <table>
+        <thead>
+            <tr>
+                <script>
+                    // for (let judul in judul_tabel) {
+                    //     document.write(`<th>${judul_tabel[judul]}</th>`)
+                    // }
+                    for (const j of judul_tabel) {
+                        document.write(`<th>${j}</th>`)
+                    }
+                </script>
+            </tr>
+        </thead>
+        <tbody id="tabelData">
+            <script>
+                class gempa {
+                    //member1 & 2 : variabel dan konstruktor
+                    constructor(lokasi, skala) {
+                        this.lok = lokasi;
+                        this.skl = skala;
+                    }
+                    //memberi fungsi2
+
+                    dampak(no) {
+                        var dampak = ''
+                        if (this.skl >= 0 && this.skl <= 2) {
+                            dampak = "Dampaknya tidak terasa"
+                        } else if (this.skl > 2 && this.skl <= 4) {
+                            dampak = "Dampaknya bangunan retak - retak"
+                        } else if (this.skl > 4 && this.skl <= 6) {
+                            dampak = "Dampaknya bangunan roboh"
+                        } else if (this.skl > 6) {
+                            dampak = "Dampaknya bangunan roboh dan berpotensi tsunami"
+                        } else {
+                            dampak = "Tidak terefinisi"
+                        }
+                        return `<tr>
+                            <td>${no}</td>
+                            <td>${this.lok}</td>
+                            <td>${this.skl} Magnitudo</td>
+                            <td>${dampak}</td>
+                        </tr>`
+                    }
+                }
+                //array assosiatif
+                let data_gempa = {
+                    'Banten': 4.5,
+                    'Moscow': 4.6,
+                    'Washington': 5,
+                    'Berlin': 3.4,
+                    'Binjai': 4.5,
+                    'Malang': 5.6,
+                    'Lampung': 2.1,
+                    'Tokyo': 6.8,
+                    'Hokaido': 4,
+                    'Haiti': 6.1,
+                }
+                //innerhtml
+                var no = 1
+                var data = ''
+                for (const d in data_gempa) {
+                    let objek = new gempa(d, data_gempa[d])
+                    data += objek.dampak(no++)
+                }
+                document.getElementById("tabelData").innerHTML = data
+            </script>
+</body>
+
+</html>
